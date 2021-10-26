@@ -37,5 +37,33 @@ namespace I3.WAD21.Demos.DAL.DAO
                 }
             }
         }
+
+        public Student Get(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(CONN_STRING))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText =
+                        $"SELECT student_id, first_name, last_name, birth_date, login, section_id, year_result, course_id FROM student WHERE student_id = {id}";
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read()) return new Student
+                        {
+                            student_id = (int)reader["student_id"],
+                            first_name = (string)reader["first_name"],
+                            last_name = (string)reader["last_name"],
+                            section_id = (int)reader["section_id"],
+                            birth_date = (DateTime)reader["birth_date"],
+                            login = (string)reader["login"],
+                            year_result = (int)reader[nameof(Student.year_result)],
+                            course_id = (string)reader[nameof(Student.course_id)]
+                        };
+                        return null;
+                    }
+                }
+            }
+        }
     }
 }

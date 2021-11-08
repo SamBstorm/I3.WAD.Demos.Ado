@@ -26,12 +26,12 @@ namespace I3.WAD21.Demos.DAL.Consomation
             Student stud = service.Get(12);
 
             Console.WriteLine($"{stud.student_id} {stud.first_name} {stud.last_name}");
-            
+
             Console.WriteLine("JUSTE ETUDIANT 26\n-------------");
 
             stud = service.Get(26);
 
-            if(stud != null) Console.WriteLine($"{stud.student_id} {stud.first_name} {stud.last_name}");
+            if (stud != null) Console.WriteLine($"{stud.student_id} {stud.first_name} {stud.last_name}");
         }
     }
 }

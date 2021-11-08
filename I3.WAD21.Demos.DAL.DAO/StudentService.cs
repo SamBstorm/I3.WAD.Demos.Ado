@@ -55,12 +55,37 @@ namespace I3.WAD21.Demos.DAL.DAO
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    SqlParameter p_fn = new SqlParameter() { ParameterName = "fn", Value = entity.first_name };
-                    SqlParameter p_ln = new SqlParameter() { ParameterName = "ln", Value = entity.last_name };
-                    SqlParameter p_bd = new SqlParameter() { ParameterName = "bd", Value = entity.birth_date };
-                    SqlParameter p_lg = new SqlParameter() { ParameterName = "lg", Value = entity.login };
-                    SqlParameter p_yr = new SqlParameter() { ParameterName = "yr", Value = entity.year_result };
-                    SqlParameter p_sid = new SqlParameter() { ParameterName = "sid", Value = entity.section_id };
+                    SqlParameter p_fn = new SqlParameter()
+                    {
+                        ParameterName = "fn",
+                        Value = (object)entity.first_name ?? DBNull.Value
+                    };
+                    SqlParameter p_ln = new SqlParameter()
+                    {
+                        ParameterName = "ln",
+                        Value = (object)entity.last_name ?? DBNull.Value
+                    };
+                    SqlParameter p_bd = new SqlParameter()
+                    {
+                        ParameterName = "bd",
+                        Value = (object)entity.birth_date ?? DBNull.Value
+                        //Value = (entity.birth_date is null) ? DBNull.Value : (object)entity.birth_date
+                    };
+                    SqlParameter p_lg = new SqlParameter()
+                    {
+                        ParameterName = "lg",
+                        Value = (object)entity.login ?? DBNull.Value
+                    };
+                    SqlParameter p_yr = new SqlParameter()
+                    {
+                        ParameterName = "yr",
+                        Value = (object)entity.year_result ?? DBNull.Value
+                    };
+                    SqlParameter p_sid = new SqlParameter()
+                    {
+                        ParameterName = "sid",
+                        Value = (object)entity.section_id ?? DBNull.Value
+                    };
                     SqlParameter p_cid = new SqlParameter() { ParameterName = "cid", Value = entity.course_id };
                     command.Parameters.Add(p_fn);
                     command.Parameters.Add(p_ln);
@@ -82,12 +107,24 @@ namespace I3.WAD21.Demos.DAL.DAO
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    SqlParameter p_fn = new SqlParameter() { ParameterName = "fn", Value = entity.first_name };
-                    SqlParameter p_ln = new SqlParameter() { ParameterName = "ln", Value = entity.last_name };
-                    SqlParameter p_bd = new SqlParameter() { ParameterName = "bd", Value = entity.birth_date };
-                    SqlParameter p_lg = new SqlParameter() { ParameterName = "lg", Value = entity.login };
-                    SqlParameter p_yr = new SqlParameter() { ParameterName = "yr", Value = entity.year_result };
-                    SqlParameter p_sid = new SqlParameter() { ParameterName = "sid", Value = entity.section_id };
+                    SqlParameter p_fn = new SqlParameter() { ParameterName = "fn", 
+                        Value = (object)entity.first_name ?? DBNull.Value };
+                    SqlParameter p_ln = new SqlParameter() { ParameterName = "ln", 
+                        Value = (object)entity.last_name ?? DBNull.Value };
+                    SqlParameter p_bd = new SqlParameter() { 
+                        ParameterName = "bd", 
+                        Value = (object)entity.birth_date ?? DBNull.Value
+                        //Value = (entity.birth_date is null) ? DBNull.Value : (object)entity.birth_date
+                    };
+                    SqlParameter p_lg = new SqlParameter() { ParameterName = "lg",
+                        Value = (object)entity.login ?? DBNull.Value
+                    };
+                    SqlParameter p_yr = new SqlParameter() { ParameterName = "yr", 
+                        Value = (object)entity.year_result ?? DBNull.Value 
+                    };
+                    SqlParameter p_sid = new SqlParameter() { ParameterName = "sid", 
+                        Value = (object)entity.section_id ?? DBNull.Value
+                    };
                     SqlParameter p_cid = new SqlParameter() { ParameterName = "cid", Value = entity.course_id };
                     SqlParameter p_stu_id = new SqlParameter() { ParameterName = "stu_id", Value = id };
                     command.Parameters.Add(p_fn);

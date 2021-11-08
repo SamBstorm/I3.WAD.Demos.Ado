@@ -21,17 +21,23 @@ namespace I3.WAD21.Demos.DAL.Consomation
                 Console.WriteLine($"{student.student_id} {student.first_name} {student.last_name}");
             }
 
-            Console.WriteLine("JUSTE ETUDIANT 12\n-------------");
+            //Récupération de l'étudiant 27
 
-            Student stud = service.Get(12);
+            Student stud = service.Get(27);
 
             Console.WriteLine($"{stud.student_id} {stud.first_name} {stud.last_name}");
 
-            Console.WriteLine("JUSTE ETUDIANT 26\n-------------");
+            stud.first_name = "Laure";
+            stud.last_name = "Romain";
+            stud.year_result = 20;
+            stud.login = "lromain";
+            stud.birth_date = null;
 
-            stud = service.Get(26);
+            if (service.Update(27, stud)) Console.WriteLine("Mise à jour effectuée!");
+            else Console.WriteLine("Oups! réessayez plus tard!");
 
-            if (stud != null) Console.WriteLine($"{stud.student_id} {stud.first_name} {stud.last_name}");
+            stud = service.Get(27);
+            Console.WriteLine($"{stud.student_id} {stud.first_name} {stud.last_name} {stud.birth_date}");
         }
     }
 }
